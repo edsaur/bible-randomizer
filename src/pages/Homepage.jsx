@@ -1,15 +1,24 @@
-import styled from "styled-components"
-import Row from "../ui/Row";
+import Carousel from "../ui/Carousel";
 
-const StyledHomepage = styled.div`
-    display: flex;
-    color: white;
-`;
+const items = [
+    {
+        image: "https://dronexl.co/wp-content/uploads/2024/10/DJI-Air-3S-drone-0215.jpg",
+        title: "Welcome to Our App",
+        text: "Discover amazing features tailored just for you.",
+        buttonText: "Get Started",
+        buttonLink: "https://example.com/get-started"
+      },
+      {
+        image: "https://dronexl.co/wp-content/uploads/2024/10/DJI-Air-3S-drone-0215.jpg",
+        title: "Stay Inspired",
+        text: "Explore our daily quotes and motivational resources.",
+        buttonText: "Learn More",
+        buttonLink: "https://example.com/learn-more"
+      },
+]
 
 export default function Homepage() {
     return (
-        <Row>
-            <h1>Hello World</h1>
-        </Row>
+       <Carousel items={items}/>
     )
 }
