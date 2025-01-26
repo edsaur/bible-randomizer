@@ -4,7 +4,7 @@ const Row = styled.div`
     display: flex;
 
     ${props=>props.type==='horizontal' && css`
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
     `}
 
@@ -15,7 +15,7 @@ const Row = styled.div`
 `;
 
 Row.defaultProps = {
-    type:'vertical',
+    type:'horizontal',
 };
 
 export default Row
