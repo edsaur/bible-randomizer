@@ -1,6 +1,6 @@
 import Hamburger from "hamburger-react";
 import { useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import styled from "styled-components";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
@@ -14,9 +14,7 @@ const StyledAppLayout = styled.div`
 
 const Main = styled.main`
   display: grid;
-  background-color: black;
-  padding: 4rem 4.8rem 6.4rem;
-
+  background-color: rgb(251, 255, 236);
 `;
 
 const Container = styled.div`
@@ -25,12 +23,16 @@ const Container = styled.div`
 `;
 
 export default function AppLayout() {
+  const locationName = useLocation().pathname;
   const [isOpen, setOpen] = useState(false);
 
   return (
     <StyledAppLayout $isOpen={isOpen}>
       <Header>
+      {
+        locationName === '/bible' &&
         <Hamburger toggled={isOpen} toggle={setOpen} />
+      }
       </Header>
       {isOpen ? <Sidebar /> : ""}
 
