@@ -9,33 +9,62 @@ const StyledNavbar = styled.nav`
   gap: 2.4rem;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.6rem; /* Adjust spacing for mobile */
+    padding: 1.6rem 2.4rem;
+  }
 `;
 
 const StyledNavList = styled.ul`
   display: flex;
   gap: 1.2rem;
+
   li {
     list-style-type: none;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack links vertically on mobile */
+    gap: 1rem;
+    width: 100%;
+  }
 `;
+
 const StyledNavItem = styled(NavLink)`
   font-weight: bold;
   color: white;
   text-decoration: none;
+
   &.active {
     background-color: #007bff;
     border-radius: 4px;
     padding: 10px;
   }
 `;
-export default function Header({children}) {
+
+const HamburgerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    order: -1; /* Move the hamburger to the top on mobile */
+    width: 100%; /* Ensure the hamburger spans the width */
+    justify-content: space-between; /* Align hamburger and optional branding/logo */
+  }
+`;
+
+export default function Header({ children }) {
   const activeLink = useLocation().pathname;
   return (
     <StyledNavbar>
+      <HamburgerWrapper>
+        {children}
+        <div style={{ color: "white", fontWeight: "bold" }}>Logo</div>
+      </HamburgerWrapper>
       <StyledNavList>
-        <li>
-            {children}
-        </li>
         <li>
           <StyledNavItem
             to="home"
@@ -57,11 +86,14 @@ export default function Header({children}) {
             to="/random-verse"
             className={activeLink === "/random-verse" ? "active" : ""}
           >
-            Generate a Random Verse
+            Generate Random Verses
           </StyledNavItem>
         </li>
         <li>
-          <StyledNavItem to='/bible' className={activeLink === "/bible" ? "active" : ""}>
+          <StyledNavItem
+            to="/bible"
+            className={activeLink === "/bible" ? "active" : ""}
+          >
             Read the Bible
           </StyledNavItem>
         </li>
