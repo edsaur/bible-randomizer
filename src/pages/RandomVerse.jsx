@@ -10,7 +10,6 @@ const StyledRow = styled(Row)`
     margin: 2rem auto;
 `
 
-
 export default function RandomVerse() {
     const {refetch} = useRandomVerse();
     function handleClick(){
