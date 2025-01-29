@@ -11,7 +11,6 @@ export default function RandomVerses() {
 
     if(isLoading || isFetching) return <Spinner/>
 
-    data ? console.log(data) : console.log(error);
     return (
         <>
          <StyledParagraph>{data.text}</StyledParagraph>
