@@ -11,7 +11,7 @@ const CarouselWrapper = styled.div`
 const CarouselContent = styled.div`
   display: flex;
   transition: transform 0.5s ease-in-out;
-  transform: translateX(-${({ currentIndex }) => currentIndex * 100}%);
+  transform: translateX(-${({ $currentIndex }) => $currentIndex * 100}%);
   height: 100%;
   width: 100%;
 `;
@@ -23,7 +23,7 @@ const CarouselItem = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${({ background }) => `url(${background}) no-repeat center center`};
+  background: ${({ $background }) => `url(${$background}) no-repeat center center`};
   background-size: cover;
   text-align: center;
   position: relative;
@@ -154,9 +154,9 @@ export default function Carousel({ items }) {
       <NavigationButton className="left" onClick={handlePrev}>
         {"<"}
       </NavigationButton>
-      <CarouselContent currentIndex={currentIndex}>
+      <CarouselContent $currentIndex={currentIndex}>
         {items.map((item, index) => (
-          <CarouselItem key={index} background={item.image}>
+          <CarouselItem key={index} $background={item.image}>
             <h2>{item.title}</h2>
             <p>{item.text}</p>
             {item.buttonText && item.buttonLink && (
