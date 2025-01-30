@@ -33,13 +33,12 @@ const StyledBox = styled.div`
   }
 
   a {
-    color: #007bff;
+    color: white;
     text-decoration: none;
     font-weight: bold;
 
     &:hover {
       text-decoration: underline;
-      color: #0056b3;
     }
   }
 
