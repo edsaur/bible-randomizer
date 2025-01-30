@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import Spinner from "../../ui/Spinner";
 import { useGetBibleBooks } from "./useGetBibleBooks";
 import { Link } from "react-router";
+import PageNotFound from "../../pages/PageNotFound";
 
 export default function Books() {
   // contains the Bible books in button form to navigate to the book/chapter.
@@ -9,12 +10,13 @@ export default function Books() {
   const { bibleLoading, bibleBooks, error } = useGetBibleBooks();
 
   const { books } = bibleBooks || {};
-  console.log(books);
   if (bibleLoading) return <Spinner />;
+  if (error) return <PageNotFound/>
 
   return (
     // map over the whole books
-    <div>
+    <>
+    <h1>The Books of the Bible</h1>
       {books?.map((book) => (
         <Button
           key={book.id}
@@ -26,6 +28,6 @@ export default function Books() {
           {book.name}
         </Button>
       ))}
-    </div>
+    </>
   );
 }

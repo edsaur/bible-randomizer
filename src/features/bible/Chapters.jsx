@@ -5,13 +5,13 @@ import Spinner from "../../ui/Spinner";
 
 export default function Chapters({ book }) {
   const { loadingChapters, bookChapters, error } = useGetChapters(book);
-
+  
   if (loadingChapters) return <Spinner />;
 
   const { chapters } = bookChapters;
-
   return (
-    <div>
+    <>
+      <h1>{chapters[0].book}</h1>
       {chapters.map((chapter) => (
         <Button
           sx={{ m: "1rem" }}
@@ -23,6 +23,6 @@ export default function Chapters({ book }) {
           {chapter.chapter}
         </Button>
       ))}
-    </div>
+    </>
   );
 }
