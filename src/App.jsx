@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Bible from "./pages/Bible";
 import BibleChapters from "./pages/BibleChapters";
 import Homepage from "./pages/Homepage";
+import PageNotFound from "./pages/PageNotFound";
 import Passages from "./pages/Passages";
 import RandomVerse from "./pages/RandomVerse";
 import Verse from "./pages/Verse";
@@ -25,6 +26,7 @@ function App() {
             <Route path="bible/:book/chapters" element={<BibleChapters />} />
             <Route path="bible/:book/:chapter" element={<Passages />} />
             <Route path="bible/:book/:chapter/:verse" element={<Verse />} />
+            <Route path="*" element={<PageNotFound/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
