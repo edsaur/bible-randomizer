@@ -1,9 +1,10 @@
 import Books from "../features/bible/Books";
+import Box from "../ui/Box";
 
 export default function Bible() {
     return (
-        <div>
+        <Box>
             <Books/>
-        </div>
+        </Box>
     )
 }
