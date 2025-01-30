@@ -24,13 +24,13 @@ const Container = styled.div`
 
 export default function AppLayout() {
   const locationName = useLocation().pathname;
-  const {book, chapter} = useParams();
+  const {book, chapter, verse} = useParams();
   const [isOpen, setOpen] = useState(false);
   return (
     <StyledAppLayout $isOpen={isOpen}>
       <Header>
       {
-        (locationName === '/bible' || locationName === `/bible/${book}/${chapter}` || locationName === `/bible/${book}/chapters`) &&
+        (locationName === '/bible' || locationName === `/bible/${book}/${chapter}` || locationName === `/bible/${book}/chapters` || locationName === `/bible/${book}/${chapter}/${verse}`) &&
         <Hamburger toggled={isOpen} toggle={setOpen} />
       }
       </Header>
