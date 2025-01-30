@@ -8,7 +8,6 @@
 //   return res.json(); // Return the parsed JSON directly
 // }
 
-
 // Helper function to handle the fetching and error checking
 async function fetchWithErrorHandling(url) {
   const res = await fetch(url);
@@ -33,13 +32,28 @@ export async function getBibleBooksId() {
   return bookIds; // Return the list of IDs
 }
 
-export async function getBibleChapters(book){
-  const data = await fetchWithErrorHandling(`https://bible-api.com/data/KJV/${book}`)
+export async function getBibleVerses(book, chapter, verses) {
+  try {
+    const data = await fetchWithErrorHandling(
+      `https://bible-api.com/${book}%20${chapter}:${verses}?translation=KJV`
+    );
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function getBibleChapters(book) {
+  const data = await fetchWithErrorHandling(
+    `https://bible-api.com/data/KJV/${book}`
+  );
   return data;
 }
 
-export async function getPassages(book,chapter){
-  const data = await fetchWithErrorHandling(`https://bible-api.com/data/KJV/${book}/${chapter}`);
+export async function getPassages(book, chapter) {
+  const data = await fetchWithErrorHandling(
+    `https://bible-api.com/${book}%20${chapter}?translation=KJV`
+  );
   return data;
 }
 
@@ -91,7 +105,5 @@ export async function getRandomVerses() {
   } catch (error) {
     console.error("Error fetching random verses:", error.message);
     throw error;
-
   }
 }
-
