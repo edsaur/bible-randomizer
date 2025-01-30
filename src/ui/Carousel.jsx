@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const CarouselWrapper = styled.div`
@@ -23,7 +24,8 @@ const CarouselItem = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${({ $background }) => `url(${$background}) no-repeat center center`};
+  background: ${({ $background }) =>
+    `url(${$background}) no-repeat center center`};
   background-size: cover;
   text-align: center;
   position: relative;
@@ -138,6 +140,7 @@ const NavigationButton = styled.button`
 
 export default function Carousel({ items }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
@@ -151,25 +154,29 @@ export default function Carousel({ items }) {
 
   return (
     <CarouselWrapper>
-      <NavigationButton className="left" onClick={handlePrev}>
-        {"<"}
-      </NavigationButton>
+      {items.length > 1 && (
+        <NavigationButton className="left" onClick={handlePrev}>
+          {"<"}
+        </NavigationButton>
+      )}
       <CarouselContent $currentIndex={currentIndex}>
         {items.map((item, index) => (
           <CarouselItem key={index} $background={item.image}>
             <h2>{item.title}</h2>
             <p>{item.text}</p>
             {item.buttonText && item.buttonLink && (
-              <button onClick={() => window.open(item.buttonLink, "_blank")}>
+              <button onClick={() => navigate('/bible/JOHN/3')}>
                 {item.buttonText}
               </button>
             )}
           </CarouselItem>
         ))}
       </CarouselContent>
-      <NavigationButton className="right" onClick={handleNext}>
-        {">"}
-      </NavigationButton>
+      {items.length > 1 && (
+        <NavigationButton className="right" onClick={handleNext}>
+          {">"}
+        </NavigationButton>
+      )}
     </CarouselWrapper>
   );
 }
