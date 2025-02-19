@@ -27,8 +27,13 @@ const VersesContainer = styled.div`
 `;
 
 const Verse = styled.span`
+  cursor: pointer;
   font-size: 1.2rem;
   line-height: 1.7;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const VerseNumber = styled.span`
@@ -103,7 +108,7 @@ export default function Passage() {
 
         <VersesContainer>
           {verses.map((verse) => (
-            <Verse key={verse.verse}>
+            <Verse key={verse.verse} onClick={() => navigate(`/bible/${book}/${chapter}/${verse.verse}`)}>
               <VerseNumber>{verse.verse}</VerseNumber>
               <VerseText>{verse.text}</VerseText>
             </Verse>

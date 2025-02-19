@@ -4,13 +4,24 @@ import About from "./pages/About";
 import Bible from "./pages/Bible";
 import BibleChapters from "./pages/BibleChapters";
 import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Passages from "./pages/Passages";
 import RandomVerse from "./pages/RandomVerse";
+import Signup from "./pages/Signup";
 import Verse from "./pages/Verse";
 import AppLayout from "./ui/AppLayout";
+import SuccessSignup from "./pages/SuccessSignup";
+// import AuthListener from "./features/authentication/AuthenticationProvider";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+      refetchOnWindowFocus: false, // Prevents refetching when switching tabs
+    },
+  },
+});
 
 function App() {
   return (
@@ -26,8 +37,12 @@ function App() {
             <Route path="bible/:book/chapters" element={<BibleChapters />} />
             <Route path="bible/:book/:chapter" element={<Passages />} />
             <Route path="bible/:book/:chapter/:verse" element={<Verse />} />
-            <Route path="*" element={<PageNotFound/>}/>
+            <Route path="*" element={<PageNotFound />} />
           </Route>
+
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="confirm-email" element={<SuccessSignup />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

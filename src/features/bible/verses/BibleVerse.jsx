@@ -3,6 +3,7 @@ import { useGetVerses } from "./useGetVerses";
 import Spinner from "../../../ui/Spinner";
 import PageNotFound from "../../../pages/PageNotFound";
 import styled from "styled-components";
+import BibleNotes from "../../notes/BibleNotes";
 
 // Styled Components
 const VerseContainer = styled.div`
@@ -46,7 +47,7 @@ export default function BibleVerse() {
   const { book, chapter, verse } = useParams();
 
   const { loadVerses, bibleVerses, error } = useGetVerses(book, chapter, verse);
-  
+
   if (loadVerses) return <Spinner />;
   if (error) return <PageNotFound />;
 
@@ -60,13 +61,15 @@ export default function BibleVerse() {
         </VerseHeading>
         <VerseText>
           {verses.map((verses) => (
-            <>
-            <VerseNumber key={verses.verse}>{verses.verse}</VerseNumber>
-            <VerseText>{verses.text}</VerseText>
-            </>
+            <div key={verses.verse}>
+              <VerseNumber >{verses.verse}</VerseNumber>
+              <VerseText>{verses.text}</VerseText>
+            </div>
           ))}
         </VerseText>
       </VerseContainer>
+
+      <BibleNotes/>
     </VerseWrapper>
   );
 }

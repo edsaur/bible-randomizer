@@ -165,7 +165,7 @@ export default function Carousel({ items }) {
             <h2>{item.title}</h2>
             <p>{item.text}</p>
             {item.buttonText && item.buttonLink && (
-              <button onClick={() => navigate('/bible/JOHN/3')}>
+              <button onClick={() => navigate(item.buttonLink)}>
                 {item.buttonText}
               </button>
             )}

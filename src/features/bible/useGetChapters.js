@@ -10,8 +10,6 @@ export const useGetChapters = (book) => {
     queryKey: ["bible-chapter", book],
     queryFn: () => getBibleChapters(book),
     refetchOnWindowFocus: false,
-    staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 30,
     enabled: !!book,
   });
 
