@@ -62,7 +62,7 @@ export default function Header({ children }) {
     <StyledNavbar>
       <HamburgerWrapper>
         {children}
-        <div style={{ color: "white", fontWeight: "bold" }}>Logo</div>
+        <div style={{ color: "white", fontWeight: "bold" }}>Biblify</div>
       </HamburgerWrapper>
       <StyledNavList>
         <li>
