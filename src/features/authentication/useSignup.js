@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import { signUpUser } from "../../api/apiUsers";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const useSignUp = (reset) => {
     const navigate = useNavigate();

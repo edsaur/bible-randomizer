@@ -1,6 +1,6 @@
 import Hamburger from "hamburger-react";
 import { useEffect, useState } from "react";
-import { Outlet, useLocation, useParams } from "react-router";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useUser } from "../features/authentication/useUser";
 import Header from "./Header";

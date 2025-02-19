@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useGetBibleBooks } from "../features/bible/useGetBibleBooks";
 import { Button } from "@mui/material";

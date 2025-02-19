@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import Spinner from "../../ui/Spinner";
 import { useGetBibleBooks } from "./useGetBibleBooks";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import PageNotFound from "../../pages/PageNotFound";
 
 export default function Books() {

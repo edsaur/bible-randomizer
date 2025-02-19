@@ -4,7 +4,7 @@ import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledParagraph = styled.p`

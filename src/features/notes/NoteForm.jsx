@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useNotes } from "./useNotes";
 import { useUser } from "../authentication/useUser";

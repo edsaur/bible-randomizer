@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";

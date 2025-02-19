@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Bible from "./pages/Bible";
 import BibleChapters from "./pages/BibleChapters";

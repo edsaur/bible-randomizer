@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { useGetChapters } from "./useGetChapters";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import Spinner from "../../ui/Spinner";
 
 export default function Chapters({ book }) {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import LoginUser from "../features/authentication/LoginUser";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { supabase } from "../api/supabase";
 

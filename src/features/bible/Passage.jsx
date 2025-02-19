@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetPassages } from "./useGetPassages";
 import Spinner from "../../ui/Spinner";
 import styled from "styled-components";

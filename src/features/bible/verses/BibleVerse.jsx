@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useGetVerses } from "./useGetVerses";
 import Spinner from "../../../ui/Spinner";
 import PageNotFound from "../../../pages/PageNotFound";

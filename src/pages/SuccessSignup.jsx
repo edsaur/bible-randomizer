@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../ui/Button";
 import { useEffect } from "react";

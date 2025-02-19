@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Spinner from "../../ui/Spinner";
 import { useRandomVerse } from "./useRandomVerse";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const StyledParagraph = styled.p`
   font-style: italic;

@@ -3,7 +3,7 @@ import Notes from "./Notes";
 import NoteForm from "./NoteForm";
 import {useUser} from '../authentication/useUser';
 import Button from "../../ui/Button";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 const StyledNotes = styled.div`
   width: 100%;
   max-width: 600px;

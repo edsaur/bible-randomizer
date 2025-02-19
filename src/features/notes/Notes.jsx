@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useFetchNotes } from "./useFetchNotes";
 import Spinner from "../../ui/Spinner";
