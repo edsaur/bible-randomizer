@@ -1,7 +1,8 @@
 import Hamburger from "hamburger-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation, useParams } from "react-router";
 import styled from "styled-components";
+import { useUser } from "../features/authentication/useUser";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
@@ -23,19 +24,40 @@ const Container = styled.div`
 `;
 
 export default function AppLayout() {
-  const locationName = useLocation().pathname;
-  const {book, chapter, verse} = useParams();
+  const location = useLocation();
+  const { book, chapter, verse } = useParams();
   const [isOpen, setOpen] = useState(false);
+  const { user, isLoading, error } = useUser();
+
+  // Close sidebar if navigating to routes outside of /bible
+  useEffect(() => {
+    const allowedRoutes = [
+      "/bible",
+      `/bible/${book}/${chapter}`,
+      `/bible/${book}/chapters`,
+      `/bible/${book}/${chapter}/${verse}`,
+    ];
+
+    if (!allowedRoutes.includes(location.pathname)) {
+      setOpen(false);
+    }
+  }, [location.pathname, book, chapter, verse]);
+
   return (
     <StyledAppLayout $isOpen={isOpen}>
       <Header>
-      {
-        (locationName === '/bible' || locationName === `/bible/${book}/${chapter}` || locationName === `/bible/${book}/chapters` || locationName === `/bible/${book}/${chapter}/${verse}`) &&
-        <Hamburger toggled={isOpen} toggle={setOpen} />
-      }
+        {location.pathname.startsWith("/bible") && (
+          <Hamburger toggled={isOpen} toggle={setOpen} />
+        )}
       </Header>
-      {isOpen ? <Sidebar /> : ""}
-
+      {isOpen && (
+        <Sidebar
+          user={user}
+          isLoading={isLoading}
+          error={error}
+          setOpen={setOpen}
+        />
+      )}
       <Main>
         <Container>
           <Outlet />
