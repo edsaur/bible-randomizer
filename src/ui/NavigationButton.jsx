@@ -9,6 +9,7 @@ const ButtonContainer = styled.div`
   top: 50%;
   width: 100%;
   transform: translateY(-50%);
+  margin: 0 20px; /* Add margin on both sides */
   pointer-events: none; /* Prevent buttons from covering other content */
 `;
 
