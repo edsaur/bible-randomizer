@@ -28,7 +28,7 @@ export default function AppLayout() {
   const { book, chapter, verse } = useParams();
   const [isOpen, setOpen] = useState(false);
   const { user, isLoading, error } = useUser();
-
+  console.log();
   // Close sidebar if navigating to routes outside of /bible
   useEffect(() => {
     const allowedRoutes = [
@@ -36,9 +36,14 @@ export default function AppLayout() {
       `/bible/${book}/${chapter}`,
       `/bible/${book}/chapters`,
       `/bible/${book}/${chapter}/${verse}`,
+      `/profile`,
     ];
 
-    if (!allowedRoutes.includes(location.pathname)) {
+    if (!allowedRoutes.some((route) => location.pathname.startsWith(route))) {
+      setOpen(false);
+    }
+
+    if (allowedRoutes.some((route) => location.pathname.startsWith(route))) {
       setOpen(false);
     }
   }, [location.pathname, book, chapter, verse]);
@@ -46,7 +51,7 @@ export default function AppLayout() {
   return (
     <StyledAppLayout $isOpen={isOpen}>
       <Header>
-        {location.pathname.startsWith("/bible") && (
+        {(location.pathname.startsWith("/bible") || location.pathname.startsWith("/profile")) && (
           <Hamburger toggled={isOpen} toggle={setOpen} />
         )}
       </Header>
