@@ -17,10 +17,19 @@ export async function createNote({ title, content, verse, user_id }) {
   return data;
 }
 
-// READ notes
-export async function getNotes(verses, user) {
+// GET all notes the user has written
+export async function getAllNotes(user) {
+  const { data, error } = await supabase.from("notes").select("*").eq("user_id", user.user.id);
 
-  
+  if (error) {    
+    throw new Error(error.message);
+  }
+
+  return data;
+} 
+
+// GET notes per verse/s
+export async function getNotes(verses, user) {
   const { data, error } = await supabase
     .from("notes")
     .select("*")

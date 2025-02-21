@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 import SuccessSignup from "./pages/SuccessSignup";
 import Verse from "./pages/Verse";
 import AppLayout from "./ui/AppLayout";
+import Profile from "./pages/Profile";
 // import AuthListener from "./features/authentication/AuthenticationProvider";
 
 const queryClient = new QueryClient({
@@ -38,6 +39,10 @@ function App() {
             <Route path="bible/:book/chapters" element={<BibleChapters />} />
             <Route path="bible/:book/:chapter" element={<Passages />} />
             <Route path="bible/:book/:chapter/:verse" element={<Verse />} />
+            
+            {/* PROFILE PAGE */}
+            <Route path="profile" element={<Profile />} />
+            
             <Route path="*" element={<PageNotFound />} />
           </Route>
 
