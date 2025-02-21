@@ -8,10 +8,11 @@ import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Passages from "./pages/Passages";
 import RandomVerse from "./pages/RandomVerse";
+import ResendConfirmation from "./pages/ResendConfirmation";
 import Signup from "./pages/Signup";
+import SuccessSignup from "./pages/SuccessSignup";
 import Verse from "./pages/Verse";
 import AppLayout from "./ui/AppLayout";
-import SuccessSignup from "./pages/SuccessSignup";
 // import AuthListener from "./features/authentication/AuthenticationProvider";
 
 const queryClient = new QueryClient({
@@ -43,6 +44,8 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="confirm-email" element={<SuccessSignup />} />
+          <Route path="resend-confirmation" element={<ResendConfirmation />} />
+
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
