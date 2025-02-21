@@ -24,7 +24,6 @@ export async function signUpUser({ email, password, username }) {
     },
   });
 
-
   if (error) {
     console.log(error);
     throw new Error(error);
@@ -43,19 +42,27 @@ export async function signUpUser({ email, password, username }) {
   return data;
 }
 
-export async function loginUser({ email, username, password }) {
-  if(!email && username){
-    const { data, error } = await supabase.from("profiles").select("email").eq("username", username).maybeSingle();
-    console.log(data, error);
+export async function loginUser({ username, password }) {
+  let email;
+
+  if (username) {
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("email")
+      .or(`username.eq.${username}, email.eq.${username}`)
+      .maybeSingle();
     if (error || !data) {
       throw new Error("Username not found");
     }
-      email = data.email
-
+    email = data.email;
   }
 
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password }); 
-  if(!password) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (!password) {
     throw new Error("Password is required");
   }
   if (error) {
@@ -73,11 +80,35 @@ export async function logoutUser() {
   }
 }
 
-export async function getUser(){
+// Resend confirmation link to user
+export async function resendConfirmationLink(email) {
+  const { error } = await supabase.auth.resend({
+    type: "signup",
+    email,
+  });
+  if (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function getUser() {
   const { data, error } = await supabase.auth.getUser();
   if (error) {
     throw new Error(error.message);
   }
 
+  return data;
+}
+
+export async function getUserEmail(username) {
+  console.log(username);
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("email")
+    .or(`email.eq.${username}, username.eq.${username}`)
+    .single();
+  if (error) {
+    throw new Error(error.message);
+  }
   return data;
 }
