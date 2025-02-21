@@ -22,7 +22,7 @@ export default function LoginUser() {
 
   const { mutate: loginUser, isPending} = useLogin();
   const location = useLocation().state;
-  const emailFromState = location?.state.email || ""; // Avoids errors
+  const emailFromState = location?.email || ""; // Avoids errors
   
   useEffect(() => {
     if (emailFromState) {

@@ -8,7 +8,6 @@ export const useSignUp = (reset) => {
         mutationFn: signUpUser,
         onSuccess: (data) => {
             alert("User signed up successfully");
-            console.log(data?.user.email);
             navigate("/confirm-email", {state: {email: data?.user.email, hasSignedUp: true}});
             reset();
         },
