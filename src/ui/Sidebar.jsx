@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useGetBibleBooks } from "../features/bible/useGetBibleBooks";
 import { Button } from "@mui/material";
@@ -69,7 +69,18 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export default function Sidebar({setOpen}) {
+const StyledLink = styled(Link)`
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #007bff;
+  }
+`;
+
+export default function Sidebar({ setOpen }) {
   const { bookLoading, bibleBooks } = useGetBibleBooks();
   const navigate = useNavigate();
 
@@ -89,7 +100,12 @@ export default function Sidebar({setOpen}) {
       <BrandTitle>Biblify</BrandTitle>
       {user ? (
         <>
-          <h2>Greetings in Christ, {user.user.user_metadata.username}</h2>
+          <h2>
+            Greetings in Christ,{" "}
+            <StyledLink to={`/profile`}>
+              {user.user.user_metadata.username}
+            </StyledLink>
+          </h2>
           <Button variant="contained" onClick={handleLogout}>
             Logout
           </Button>
