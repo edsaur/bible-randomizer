@@ -10,8 +10,15 @@ export const useLogin = () => {
             alert("User logged in successfully");
             navigate("/bible");
         },
-        onError: (error) => {
+        onError: (error, data) => {
+            const {username} = data || {};
             alert(`Error logging in: ${error.message}`);
+
+            if (error.message === "Email not confirmed") {
+            // redirect to a resend confirmation page
+                navigate('/resend-confirmation', {state: {username}});
+            }
+
         },
     });
 }
