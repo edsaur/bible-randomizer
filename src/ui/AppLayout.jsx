@@ -46,6 +46,8 @@ export default function AppLayout() {
     if (allowedRoutes.some((route) => location.pathname.startsWith(route))) {
       setOpen(false);
     }
+
+    document.querySelector("main").addEventListener("click", () => setOpen(false));
   }, [location.pathname, book, chapter, verse]);
 
   return (
