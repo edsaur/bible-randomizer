@@ -59,6 +59,11 @@ public/               # Static assets
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
+
+# NOTE
+The Supabase database has been archived so the CRUD operation is not functional
+
+
 ## License
 
 [MIT](LICENSE)
